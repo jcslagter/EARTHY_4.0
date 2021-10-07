@@ -3,11 +3,10 @@ y = list(range(0,400))
 Grid_size = 2
 Area_funct = 215
 values = []
-Area_function = 400
+Area_function = 300
 
-for i in (list(range(15))):
-    values.append(2**i)
-
+for i in (list(range(180))):
+    values.append((Grid_size**2)*i)
 
 def takeClosest(Values, Area_function):
     newlst = []
@@ -45,8 +44,23 @@ _Area_function = takeClosest(values, Area_function)
 
 outcome = x_and_yRange (x, y, _Area_function, Grid_size)
 
-pair_size = outcome[0]
-x_size = outcome[1]
-y_size = outcome[2]
-final_pairs = [pair_size[i:i + n] for i in range(0, len(pair_size), n)]
 
+pair_size = outcome[0]
+
+x_size = outcome[1]
+x_cells = x_size[:int((len(x_size))/2)]
+
+
+y_size = outcome[2]
+y_cells = y_size[:int((len(y_size))/2)]
+
+
+final_pairs = [pair_size[i:i + 2] for i in range(0, len(pair_size), 2)]
+
+
+
+
+print(_Area_function)
+print(x_cells)
+print(y_cells)
+print(final_pairs)
