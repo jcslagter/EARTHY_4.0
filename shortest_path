@@ -145,6 +145,7 @@ edges = result
 for edge in edges:
     graph.add_edge(edge[0], edge[1], edge[2])
 ## Somewhere in here lies the problem. It is identifying 5 arg. while it allowes for 4 and it is given 3.
+## this is probably because the graph network input is not defined properly, However there is no more time left in the project to keep working on this.
 
 
 
