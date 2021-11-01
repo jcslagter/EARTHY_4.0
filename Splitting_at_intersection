@@ -1,0 +1,26 @@
+from ghpythonlib.treehelpers import list_to_tree
+from Rhino.Geometry.Intersect import Intersection
+from scriptcontext import doc
+
+
+tol = doc.ModelAbsoluteTolerance
+params = []
+
+
+for i in range(len(crvs)):
+    params.append([])
+
+for i in range(len(crvs)):
+    for j in range(i+1, len(crvs)):
+        events = Intersection.CurveCurve(crvs[i], crvs[j], tol, tol)
+        for event in events:
+            params[i].append(event.ParameterA)
+            params[j].append(event.ParameterB)
+
+sub_curves = []
+
+for i in range(len(crvs)):
+        sub_curves.append(crvs[i].Split(params[i]))
+
+
+a = list_to_tree(sub_curves)
